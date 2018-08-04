@@ -8,7 +8,7 @@ The data is obtained from a Kaggle tutorial competition, [`Bag of Words Meets Ba
 
 ## Methodology
 ### Data preprocessing
-Typical data cleaning steps for text include removing stopwords and normalizing text. In this example, we also implement removal of HTML tags.
+Typical data cleaning steps for text include removing stop words and normalizing text. In this example, we also implement removal of HTML tags.
 
 ### Feature extraction
 #### Bag-of-words word counts
@@ -35,6 +35,20 @@ Sentence 2: [3, 1, 0, 0, 1, 1, 1, 1]
 
 Each sentence can thus be transformed into a vector, with the length of the vector being the number of words in the vocabulary. During classification, the model will then possibly learn that higher occurrences of certain words are more likely to lead to a particular prediction.
 
+#### `word2vec`
+`word2vec` produces word embeddings for one-hot encoded vectors, such that each word can be represented as an `n`-dimensional vector. These word vectors are able to capture word relations in vector space.
+
+##### Continuous bag-of-words (CBOW)
+In the CBOW model, we attempt to predict a **word** given its **context**. This means that we attempt to predict the center word from the sum of surrounding word vectors.
+
+##### Skip-gram
+For the skip-gram model, we predict the **context** given a **word**. Instead of predicting the center word from surounding words, given the center word, we instead predict each surrounding single word.
+
+**The skip-gram model is found to perform better against words that appear less frequently.** However, it is much slower to train, as compared to the CBOW model.
+
+Thus, **negative sampling** is introduced when training the skip-gram model. On top of the surrounding words, we also take `k` negative samples (words that are not within the context window).
+During training, we maximimize the probability that the words in the context window appears, while also minimizing the probability that other words appear.
+
 ### Classification
 #### Machine learning
 We use a **random forest classifier** with `SciKit-Learn` as a ML classifier for extracted features.
@@ -52,3 +66,9 @@ This tutorial guides the user through constructing a **bag-of-words** classifica
 ### [Predicting Movie Review Sentiment with TensorFlow and TensorBoard](https://medium.com/@Currie32/predicting-movie-review-sentiment-with-tensorflow-and-tensorboard-53bf16af0acf)
 
 ### [Implementing a CNN for Text Classification in Tensorflow](http://www.wildml.com/2015/12/implementing-a-cnn-for-text-classification-in-tensorflow/)
+
+## Additional readings
+### `word2vec`
+* [`word2vec` lecture from Stanford CS224n](http://web.stanford.edu/class/cs224n/lectures/lecture2.pdf)
+* [Tensorflow `word2vec` tutorial](https://www.tensorflow.org/tutorials/representation/word2vechttps://www.tensorflow.org/tutorials/representation/word2vec)
+* [Explanation of `word2vec` training](http://www.1-4-5.net/~dmm/ml/how_does_word2vec_work.pdf)
