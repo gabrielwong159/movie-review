@@ -1,6 +1,6 @@
 # Sentiment analysis on movie reviews
 ## About
-<img align="right" src="https://kaggle2.blob.core.windows.net/competitions/kaggle/3971/logos/front_page.png" />
+<img align="right" src="https://imgur.com/sz1Xguk.png" />
 
 This project is an exploration of methods involved in natural language processing, and in this case, sentiment analysis with text classification.
 
@@ -54,7 +54,10 @@ During training, we maximimize the probability that the words in the context win
 We use a **random forest classifier** with `SciKit-Learn` as a ML classifier for extracted features.
 
 #### RNN
-
+The RNN model architecture consists of the following components:
+1. Word embedding as a randomly initialized _trainable variable_
+1. RNN for feature extraction
+1. Fully-connected layer for softmax classification
 
 #### CNN
 
@@ -64,6 +67,7 @@ We use a **random forest classifier** with `SciKit-Learn` as a ML classifier for
 This tutorial guides the user through constructing a **bag-of-words** classification model. It begins with data cleaning methods, before feature extraction by **word counts** and **word2vec**. Classification is done by **random forest**.
 
 ### [Predicting Movie Review Sentiment with TensorFlow and TensorBoard](https://medium.com/@Currie32/predicting-movie-review-sentiment-with-tensorflow-and-tensorboard-53bf16af0acf)
+Guide to using RNNs for text classification.
 
 ### [Implementing a CNN for Text Classification in Tensorflow](http://www.wildml.com/2015/12/implementing-a-cnn-for-text-classification-in-tensorflow/)
 

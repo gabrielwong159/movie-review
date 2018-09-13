@@ -1,6 +1,7 @@
 beautifulsoup4
 gensim
 jupyter
+keras
 nltk
 numpy
 pandas
