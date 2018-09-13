@@ -60,6 +60,11 @@ The RNN model architecture consists of the following components:
 1. Fully-connected layer for softmax classification
 
 #### CNN
+Model architecture for CNN is obtained from the paper [Convolutional Neural Networks for Sentence Classification](https://arxiv.org/abs/1408.5882).
+
+Similar to the RNN model architecture, the CNN involves training new word embeddings from scratch. After obtaining word vectors, the vector is independently passed through convolutional layers with kernels of sizes 3, 4, and 5. The max of each filter is then taken through max-pooling, resulting in a tensor of shape `[batch, 1, 1, n_filters]` per kernel size.
+
+The results of each convolutional layer is then concatenated and flattened, before being fed into a fully-connected layer for softmax classification.
 
 
 ## Resources
@@ -76,3 +81,4 @@ Guide to using RNNs for text classification.
 * [`word2vec` lecture from Stanford CS224n](http://web.stanford.edu/class/cs224n/lectures/lecture2.pdf)
 * [Tensorflow `word2vec` tutorial](https://www.tensorflow.org/tutorials/representation/word2vechttps://www.tensorflow.org/tutorials/representation/word2vec)
 * [Explanation of `word2vec` training](http://www.1-4-5.net/~dmm/ml/how_does_word2vec_work.pdf)
+* [Convolutional Neural Networks for Sentence Classification](https://arxiv.org/abs/1408.5882)
